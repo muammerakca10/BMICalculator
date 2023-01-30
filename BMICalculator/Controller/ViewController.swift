@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
-        
+    
     var calculatorBrain = CalculatorBrain()
         
     override func viewDidLoad() {
@@ -44,7 +44,8 @@ class ViewController: UIViewController {
         if segue.identifier == "toResultVC" {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.result = self.result
+            destinationVC.message = calculatorBrain.chooseMessage(result: result)
+            destinationVC.view.backgroundColor = calculatorBrain.chooseBackgroundColor(result: result)
         }
     }
 }
-
