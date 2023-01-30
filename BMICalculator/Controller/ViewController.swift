@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
-    
-    var bmi : Double?
+        
+    var calculatorBrain = CalculatorBrain()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
-        result = Double(weight) / Double(height * height)
+        result = calculatorBrain.calculateBMI(height: height, weight: weight)
         print(result)
         
         performSegue(withIdentifier: "toResultVC", sender: nil)
